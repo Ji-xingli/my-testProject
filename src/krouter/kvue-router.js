@@ -8,6 +8,12 @@ class KVueRouter {
         // 保存选项
         this.$options = options;
 
+        // 缓存path、route映射关系
+        this.routeMap={}
+        this.$options.routes.forEach(route=>{
+            this.routeMap[route.path]=route
+        })
+
         // 响应式数据,响应式数据依赖于Vue
         // current保存当前url  （监控url变化）
         // defineReactive给一个obj定义一个响应式属性  #/about  slice从1开始截取，如果无-用   /
@@ -73,21 +79,20 @@ KVueRouter.install = function (_Vue) {
         render(h) {
             // 获取current对应的组件并渲染
             // console.log(this.$router.current)
-            let component = null
-            // 获取当前route
-            const route = this.$router.$options.routes.find((route) => route.path === this.$router.current);
-            // 如果存在
-            if (route) {
-                component = route.component
-            }
+            // let component = null
+            // // 获取当前route
+            // const route = this.$router.$options.routes.find((route) => route.path === this.$router.current);
+            // // 如果存在
+            // if (route) {
+            //     component = route.component
+            // }
 
-            // const {
-            //     routeMap,
-            //     current
-            // } = this.$router
-            // const component = routeMap[current] ? routeMap[current].component : null;
+            const {
+                routeMap,
+                current
+            } = this.$router
+            const component = routeMap[current] ? routeMap[current].component : null;
 
-            // h(Component)
             return h(component);
         }
     })
