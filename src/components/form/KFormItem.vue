@@ -5,7 +5,7 @@
     <!-- 内容  容器-->
     <slot></slot>
     <!-- 校验 错误信息 -->
-    <p class="error" v-if="error">{{error}}</p>
+    <!-- <p class="error" v-if="error">{{error}}</p> -->
     <!-- 获取值 -->
     <!-- {{form.rules[prop]}}
     {{form.model[prop]}}-->

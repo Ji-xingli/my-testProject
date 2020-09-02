@@ -30,7 +30,7 @@ export default {
       // 检查校验结果
       Promise.all(tasks)
         .then(() => cb(true))
-        .catch(cb(false));
+        .catch(() => cb(false));
     }
   }
 };

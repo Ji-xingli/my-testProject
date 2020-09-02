@@ -20,8 +20,8 @@ import KInput from "@/components/form/KInput.vue";
 import KFormItem from "@/components/form/KFormItem.vue";
 import KForm from "@/components/form/KForm.vue";
 
-import create from '@/utils/create';
-import Notice from '@/components/Notice.vue';
+// import create from '@/utils/create';
+// import Notice from '@/components/Notice.vue';
 
 export default {
   components: {
@@ -48,21 +48,30 @@ export default {
   methods: {
     submit() {
       // 调用form 的全局校验方法
-      this.$refs.loginForm.validate(isValid=>{
-        create(Notice,{
-          title:"提示",
-          message:isValid?'杨哥喊你来搬砖':'失败请重试',
-          duration:3000
+      this.$refs.loginForm.validate(isValid => {
+
+        // 页面直接使用弹窗插件
+        this.$notice({
+          title: "提示",
+          message: isValid ? "杨哥喊你来搬砖" : "失败请重试",
+          duration: 3000
         }).show();
+
+        // create(Notice,{
+        //   title:"提示",
+        //   message:isValid?'杨哥喊你来搬砖':'失败请重试',
+        //   duration:3000
+        // }).show();
+
         // console.log(Notice)
         // if(isValid){
         //   console.log("提交")
         // }else{
         //   console.log("校验失败")
         // }
-      })
+      });
     }
-  },
+  }
 };
 </script>
 

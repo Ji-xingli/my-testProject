@@ -1,5 +1,5 @@
 import Vue from 'vue'
-
+import Notice from '@/components/Notice.vue';
 // 传递一个组件的配置，返回一个组件实例，并挂载到body
 function create(Component, props) {
     // 1、组件实例创建
@@ -34,4 +34,12 @@ function create(Component, props) {
 
 }
 
-export default create
+// export default create
+// 进一步封装--插件--方便使用---封装后页面无需引入vue页面，全局注册直接调用
+export default {
+    install(Vue) {
+        Vue.prototype.$notice = function (options) {
+            return create(Notice, options)
+        }
+    }
+}
