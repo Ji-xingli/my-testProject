@@ -9,6 +9,11 @@
     <!-- <SlotExample></SlotExample> -->
     <!-- 递归 -->
     <!-- <TreeExample></TreeExample> -->
+
+    <p @click="$store.commit('add')">counter:{{$store.state.counter}}</p>
+    <p @click="$store.dispatch('add')">sync:{{$store.state.counter}}</p>
+
+    <p>doubleCounter:{{$store.getters.doubleCounter}}</p>
   </div>
 </template>
 
