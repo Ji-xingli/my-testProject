@@ -36,6 +36,7 @@ function create(Component, props) {
 
 // export default create
 // 进一步封装--插件--方便使用---封装后页面无需引入vue页面，全局注册直接调用
+// 导出
 export default {
     install(Vue) {
         Vue.prototype.$notice = function (options) {
